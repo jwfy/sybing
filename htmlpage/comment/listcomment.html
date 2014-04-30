@@ -1,0 +1,5 @@
+          {% load comments %}
+            <div class="self-comment-user"><a href="{{ comment.user_url}}">{{ comment.user_name }}</a> 回复在：{{ comment.submit_date|date:"Y-m-d H:i"}}</div> 
+            <div class="self-clean"></div>      
+        <div class="col-md-12"><div class="self-comment-contain">{{ comment.comment }}</div></div>
+         <div class="self-clean"></div>

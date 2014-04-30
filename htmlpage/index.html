@@ -1,0 +1,28 @@
+{% extends "root.html" %}
+{% block active1 %} class="active" {% endblock %}
+{%load sidebar%}
+{% block MAIN %}
+<div class="list-group self-list-group" id="cat">
+  <a  class="list-group-item active"> 目录</a>
+  {% Cats %}
+</div>
+
+<div class="list-group self-list-group" id="article">
+  <a  class="list-group-item active"> 最近文章</a>
+  {% Titles %}
+</div>
+
+<div class="list-group self-list-group" id="tag">
+  <a  class="list-group-item active"> 标签</a>
+  <div class="self-tag">
+    {% Tags %}
+   <div class="self-clean"></div>
+  </div>
+  
+</div>
+
+<div class="list-group self-list-group" id="link">
+  <a  class="list-group-item active"> 链接</a>
+  {% Links %}
+</div>
+{% endblock %}

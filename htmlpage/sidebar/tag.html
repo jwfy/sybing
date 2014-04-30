@@ -1,0 +1,4 @@
+<!--<a href="#" class="list-group-item">E-mail</a>-->
+{% for tag in tags %}
+<a href="{% url 'blogbytag' tag.id %}" >{{ tag.name }}</a>
+{% endfor %}

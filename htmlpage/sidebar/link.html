@@ -1,0 +1,4 @@
+<!--<a href="#" class="list-group-item">E-mail</a>-->
+{% for link in links %}
+<a href="{{ link.url }}" class="list-group-item" title="{{ link.name }}">{{ link.name }}</a>
+{% endfor %}

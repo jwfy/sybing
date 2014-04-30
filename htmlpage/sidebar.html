@@ -1,0 +1,47 @@
+{%load sidebar%}
+<!--   主要是侧边栏  -->
+
+<div class="panel panel-default self-panel" id="search">
+  <div class="panel-body self-panel-body">
+       <form  role="search" method="get" action ="{% url 'blogbysearch' %}">
+       {% csrf_token %}
+      <div class="input-group self-form-inp">
+        <input type="text" class="form-control" placeholder="Search" name="q">
+      </div>
+      <button type="submit" class="btn btn-default self-form-but">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="list-group self-list-group" id="about">
+  <a  class="list-group-item active"> 联系本人 </a>
+  <a href="http://weibo.com/u/3019454970" class="list-group-item self-list" title="新浪微博" target="_blank">Weibo</a>
+  <a href="http://sighttp.qq.com/authd?IDKEY=4d9d874c4a3b7bd48220ce6e901e8ba020c88dee0217011f" class="list-group-item self-list" title="和我聊天吧" target="_blank">QQ</a>
+  <a href="mailto:jwfy0902@foxmail.com" class="list-group-item self-list" title="给我写邮件吧" target="_blank">E-mail</a>
+  <a href="#" class="list-group-item self-list">Google +</a>
+  <div class="self-clean"></div>
+</div>
+
+<div class="list-group self-list-group" id="cat">
+  <a  class="list-group-item active"> 目录</a>
+  {% Cats %}
+</div>
+
+<div class="list-group self-list-group" id="article">
+  <a  class="list-group-item active"> 最近文章</a>
+  {% Titles %}
+</div>
+
+<div class="list-group self-list-group" id="tag">
+  <a  class="list-group-item active"> 标签</a>
+  <div class="self-tag">
+    {% Tags %}
+   <div class="self-clean"></div>
+  </div>
+  
+</div>
+
+<div class="list-group self-list-group" id="link">
+  <a  class="list-group-item active"> 链接</a>
+  {% Links %}
+</div>

@@ -1,0 +1,282 @@
+﻿.music
+{
+font-family: Arial,Verdana,Sans-serif;
+}
+.music_class_pic
+{
+	width:100%;
+	min-height:260px;
+	max-height:260px;
+}
+.music_list_panel
+{
+    min-height: 438px;
+    max-height: 438px;
+    overflow-y: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-family: Arial,Verdana,Sans-serif;
+}
+.music_item
+{
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    border: 0px;
+}
+.music_item_name
+{
+    width: 50%;
+    float:left;
+}
+.music_item_author
+{
+    width: 30%;
+    float: left;
+}
+.music_item_cat
+{
+    width: 20%;
+    float: left;
+}
+.music_item_url,.music_item_picture,.music_item_lrcurl
+{
+    display: none;
+    float: none;
+}
+
+.music_control
+{
+    opacity: 0.5;
+    width: 100%;
+    padding-left: -15px;
+    padding-right: -15px;
+    float: left;
+    margin-top: 10px;
+    font-family: Arial,Verdana,Sans-serif;
+}
+.music_load_bar
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow:visible;
+    cursor: pointer;
+}
+.music_load_control,.music_volume_control
+{
+    position:absolute;
+    font-size: 40px;
+    color: #000000;
+    width: 30px;
+    top:-8px;
+    left: -5px;
+    cursor: pointer;
+}
+.music_control_main
+{
+    height: 80px;
+    margin-top: 4px;
+    line-height: 80px;
+    width: 100%;
+}
+.music_volume_tool_main
+{
+    height: 100%;
+    width: auto;
+    float: left;
+}
+
+
+.music_control_name
+{
+    width: 40%;
+    font-size: 18px;
+    float: left;
+    height: 80px;
+}
+.music_control_control
+{
+    font-size: 30px;
+    float: left;
+    height: 80px;
+    padding-right: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 20%;
+}
+.music_control_style
+{
+    width: 40%;
+    font-size: 30px;
+    height: 80px;
+    float: left;
+    padding-top: 10px;
+}
+#pre,#next
+{
+    cursor: pointer;
+    font-size: 40px;
+    height: 80px;
+    line-height: 80px;
+    width: 25%;
+
+}
+#play,#pause
+{
+    font-size: 60px;
+    cursor: pointer;
+    width: 50%;
+}
+#volume
+{
+    cursor: pointer;
+    font-size: 40px;
+    height: 80px;
+    line-height: 80px;
+}
+.music_picture
+{
+    margin-left: 15%;
+    min-height: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    float: left;
+}
+.music_infobox
+{
+    height: 75px;
+    width: 55%;
+    float: left;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+.music_info_title,.music_info_time
+{
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    float: left;
+    font-size: 15px;
+}
+.music_volume_bar
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    overflow:visible;
+    width: 100%;
+    float: left;
+    cursor: pointer;
+}
+.music_volume_main
+{
+    padding-top: 23px;
+    width: 76%;
+    height: 100%;
+    float: left;
+}
+.music_volume_tool_main
+{
+    height: 100%;
+    width: auto;
+    float: left;
+}
+.music_play_playstyle
+{
+    height: 80px;
+    width: auto;
+    margin-left: 10%;
+    float: left;
+    font-size: 20px;
+    line-height: 80px;
+    font-weight: blod;
+    cursor: pointer;
+	position:relative;
+	
+}
+.music_show_playstyle
+{
+	position:absolute;
+	height:75px;
+	width:100px;
+	font-size:14px;
+	display:none;
+	bottom:50px;
+	right:0px;
+	background-color:#ffffff;
+	color:#000000;
+	
+}
+.music_show_playstyle span
+{
+	height:25px;
+	width:100px;
+	float:left;
+	line-height:25px;
+	
+}
+.music_show_playstyle span:hover
+{
+	color:#ffffff;
+	display:block;
+	background-color:#BDC3C7;
+}
+.music_other
+{
+	position:fixed;
+	display:none;
+}
+.music_item:hover
+{
+    background-color:#9b59b6;
+    opacity: 0.6;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.music_item_active
+{
+    background-color: #9B59B6;
+    opacity: 1;
+    font-size: 15px;
+    color: #ffffff;
+}
+.progress-bar-self
+{
+    background-color: #BDC3C7;
+}
+.music_lrc
+{
+    width: 100%;
+    min-height: 438px;
+    max-height: 438px;
+    font-size: 12px;
+    color: #000000;
+    display: none;
+	overflow-y:hidden;
+}
+.lrc-panel
+{
+	margin-top:219px;
+	display:block;
+	width:30%;
+	margin-left:35%;
+	text-align:center;
+}
+.lrc-line
+{
+/*
+	height:30px;
+	margin-top:0px;
+	margin-top:0px;
+	line-height:30px;
+*/
+}
+.lrc-current
+{
+	font-size:14px;
+	color:#F00;
+}

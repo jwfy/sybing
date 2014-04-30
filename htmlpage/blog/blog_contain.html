@@ -1,0 +1,15 @@
+{% load markup %}
+{% load comments %}
+  <div class="panel panel-default">
+      <div class="panel-body">
+      <h1>{{ article.caption }} </h1>
+        <p> 发表时间：{{ article.publish_time|date:"F j,Y" }} 
+        标签：{% for tag in article.tags.all %}
+               <a href="{% url 'blogbytag' tag.id%}">{{ tag.name }}</a>
+             {% endfor %}
+        </p>
+        <hr />
+        {{ article.content|markdown}}
+      </div>
+  </div> 
+  

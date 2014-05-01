@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "blog.html" %}
 {% load comments %}
 {% csrf_token %}
 {% block title %}{{ article.caption }} --jwfy的博客{% endblock %}
 
 {% block container %} 
 
-{%include 'blog/blog.html'%}
+{%include 'blog/blog_contain.html'%}
 
 <div class="row " id="showcomment">
 <div class="col-md-12">

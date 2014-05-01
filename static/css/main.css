@@ -255,5 +255,14 @@
 	z-index:200;
 	display:block;
 	cursor:pointer;
-	color:#428BCA;
+	color:red;
+}
+.self-comment-showstyle:hover
+{
+	background-color:#ddd;
+	color:#000;
+}
+.self-list-commit
+{
+	border:2px solid #F9F9F9;
 }

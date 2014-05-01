@@ -1,7 +1,7 @@
 .self-jum
 {
-	margin-left:15px;
-	margin-right:15px;
+	margin-left:-15px;
+	margin-right:-15px;
 }
 .self-row
 {
@@ -186,14 +186,17 @@
 	font-size:16px;
 	line-height:30px;
 	padding-left:15px;
+	width:100%;
 }
 .self-comment-contain
 {
 	font-size:14px;
 	padding-left:15px;
 	padding-top:10px;
+	max-height:400px;
+	overflow-y:hidden;
+	
 }
-
 .self-about-main
 {
 	margin:20px auto;
@@ -203,6 +206,54 @@
 	font-size:20px;
 }
 
-
-
-
+.self-index-group-1
+{
+	width:32%;
+	float:left;
+	margin-right:2%;
+}
+.self-index-group-2
+{
+	width:32%;
+	float:left;
+}
+.self-index-group-3
+{
+	width:32%;
+	float:left;
+	margin-left:2%;
+}
+.sidebar-item-display
+{
+	float:right;
+	margin-right:5px;
+	display:block;
+	cursor:pointer;
+}
+.self-comment-user-name
+{
+	width:10%;
+	font-size:20px;
+	color:#428BCA;
+	float:left;
+}
+.self-comment-user-time
+{
+	width:85%;
+	font-size:15px;
+	float:left;
+}
+.self-comment-number
+{
+	width:5%;
+	float:left;
+}
+.self-comment-showstyle
+{
+	position:absolute;
+	right:30px;
+	z-index:200;
+	display:block;
+	cursor:pointer;
+	color:#428BCA;
+}

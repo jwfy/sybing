@@ -5,7 +5,7 @@
 <div class="self-comment-title">新的评论</div>
 <div class="self-clean"></div>
 {% get_comment_form for article as article_form %}
-<form  action="{% comment_form_target %}" method="post" class="mainform">
+<form  action="{% comment_form_target %}" method="post" class="mainform" id="receive_comment">
     <form action="#" method="post" class="mainform">
             {% csrf_token %}
             {{ article_form.object_pk }}
@@ -27,7 +27,7 @@
         </div>
         <div class="self-clean"></div>
         <div class="col-md-10">
-        	<textarea class="self-input" id="id_comment" name="comment" placeholder="请输入评论内容"></textarea>
+        	<textarea class="self-input" id="id_comment" name="comment" placeholder="请输入评论内容，提示：可以采用markdown格式插入高亮代码或者图片"></textarea>
         </div>
         <div class="self-clean"></div>
         <div class="col-md-12">

@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'sybing',
     'django.contrib.markup',
     'django.contrib.comments',
+	'django.contrib.humanize',
 )
 
 # A sample logging configuration. The only tangible logging

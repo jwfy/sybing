@@ -50,7 +50,7 @@ class Link(models.Model):
 
 
 class Blog(models.Model):
-    """docstring for Blogs"""
+    """docstring for blog"""
     caption = models.CharField(max_length=50, verbose_name=u"标题")
     author = models.ForeignKey(Author, verbose_name=u"作者")
     cat = models.ForeignKey(Category, verbose_name=u'目录')
@@ -99,6 +99,7 @@ class MusicBox(models.Model):
 class Music(models.Model):
     """这是在“音乐页面”的主要的歌曲信息"""
     url = models.CharField(max_length=500, verbose_name=u"歌曲地址")
+    #url = models.FileField(upload_to="music",verbose_name=u"歌曲地址")
     name = models.CharField(max_length=100, verbose_name=u"歌曲名称")
     author = models.CharField(max_length=100, verbose_name=u"歌曲作者")
     picture = models.URLField(blank=True, max_length=500, verbose_name=u"作者头像")

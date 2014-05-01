@@ -2,7 +2,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
-from django.http import HttpResponse,  Http404
+from django.http import HttpResponse, Http404
 from sybing.models import Tag, Category,  Author, Link, Blog, Music
 from django.views.generic import ListView, DetailView
 from django.db.models import Q

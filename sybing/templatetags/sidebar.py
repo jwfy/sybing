@@ -19,6 +19,16 @@ def Links():
 def Titles():
     return {'titles':Blog.objects.all()[:6],}
 
+# about index html
 
+@register.inclusion_tag('sidebar/cat.html')
+def ICats():
+    return {'cats':Category.objects.all()[:5],}
 
+@register.inclusion_tag('sidebar/link.html')
+def ILinks():
+    return {'links':Link.objects.all(),}
 
+@register.inclusion_tag('sidebar/recentblog.html')
+def ITitles():
+    return {'titles':Blog.objects.all()[:6],}

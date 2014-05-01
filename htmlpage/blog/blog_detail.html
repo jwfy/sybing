@@ -1,6 +1,7 @@
 {% extends "blog.html" %}
 {% load comments %}
 {% csrf_token %}
+
 {% block title %}{{ article.caption }} --jwfy的博客{% endblock %}
 
 {% block container %} 
@@ -17,7 +18,9 @@
       	<div class="self-comment-title">评论数：{{ comment_count }}</div>
       	{% get_comment_list for article as comments %}
               {% for comment in comments %}
+			          <div class="self-list-commit" id="comment-{{forloop.counter}}">
                     {%include 'comment/listcomment.html'%}
+						</div>
               {% endfor %} 
       {% endifequal %}
       <div class="self-clean"></div>

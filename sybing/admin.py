@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from sybing.models import Author, Blog, Tag, Picture, Category, Link, Music, MusicBox
 from django.contrib import admin
+from django.contrib.comments.moderation import CommentModerator, moderator
 
 
 class AuthorAdmin(admin.ModelAdmin):

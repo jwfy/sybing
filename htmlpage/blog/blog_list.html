@@ -1,12 +1,5 @@
-{% extends "base.html" %}
+{% extends "blog.html" %}
 {% block title %}jwfy的博客{% endblock %}
-{% block pic %}
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <h3>每一步都是下一步的第一步</h3>
-  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-</div>
-{% endblock %}
 {% csrf_token %}
 {% block container%}
   {% if blogs.count %}

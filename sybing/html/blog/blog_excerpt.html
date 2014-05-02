@@ -1,0 +1,31 @@
+{% load comments %}
+{% load markup %}
+{% load humanize %} 
+<div class="panel self-panel-default">
+   <div class="panel-heading self-panel-head">
+   		<a href="{% url 'blogdetail' blog.pk %}" title={{ blog.caption }} >{{ blog.caption }}</a>
+   </div>
+   <div class="self-panel-other">
+        <div class="self-panel-other-part">目录：<a href="{% url 'blogbycat' blog.cat.id %}">{{ blog.cat}}</a></div>
+        <div class="self-panel-other-part">标签：
+            {% for tag in blog.tags.all %}
+                <a href="{% url 'blogbytag' tag.id%}">{{ tag.name }}</a>
+            {% endfor %}</div>
+        <div class="self-panel-other-part">{{ blog.publish_time| naturaltime}} </div>
+        <div class="self-panel-other-part">
+             {% get_comment_count for blog as comment_count %}
+             {% ifequal comment_count 0 %}
+                  暂无评论
+             {% else %}
+                  {{ comment_count }}条评论  
+             {% endifequal %}  
+         </div>
+         <div class="self-panel-other-part">浏览量： {{ blog.count }}
+         </div>
+   </div>
+   <div class="self-clean"></div>
+   <div class="panel-body self-panel-body-main">
+   <!--escape|linebreaks|safe-->
+        {{ blog.content|markdown|slice:"300" }}
+   </div>
+</div>

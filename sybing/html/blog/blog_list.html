@@ -1,0 +1,36 @@
+{% extends "blog.html" %}
+{% block title %}jwfy的博客{% endblock %}
+{% csrf_token %}
+{% block container%}
+  {% if blogs.count %}
+    {% for blog in blogs %}
+    	{%include 'blog/blog_excerpt.html'%}
+    {% endfor %}
+  {% else %}
+    <p>抱歉！暂时还没有文章。也许你可以看看其他的东西</p>
+  {% endif %}
+  <!--   分页  -->
+  <!-- http://stackoverflow.com/questions/17997641/django-pagination-if-current-page-in-template  -->
+  <!--  无力吐槽 ，在这里找到了参数 paginator.page_range   --> 
+    <div class="containered">   
+    {% if is_paginated %}
+    <ul class="pagination pagination-lg">
+        {% if page_obj.has_previous %}
+           <li class="disable"><a href="{% url 'blog' %}?page=1">&laquo;</a></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+               {% if i = page_obj.number %}
+               		<li class="active"><a href="{% url 'blog' %}?page={{i}}">{{i}}</a></li>
+               {% else %}
+					<li class="disable"><a href="{% url 'blog' %}?page={{i}}">{{i}}</a></li>
+               {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        	<li class="disable"><a href="{% url 'blog' %}?page={{ paginator.num_pages }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    </div>
+{% endblock %}
+
+

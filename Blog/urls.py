@@ -1,6 +1,6 @@
 # -*- coding: cp936 -*-
 from django.conf.urls import patterns, include, url
-
+from django.conf import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 
@@ -24,7 +24,14 @@ urlpatterns = patterns('',
 )
 #  这里就是模块化的很好的一个例子，当我们的app过多的时候，调用很容易出现问题，这就很方便了
 urlpatterns += patterns((''),
-    (r'^sybing/', include('sybing.urls')),
-        
+    (r'^sybing/',include('sybing.urls')),      
 )
+
+#  这是在调试这一块的时候的设置
+if settings.DEBUG is False:
+    urlpatterns += patterns('',
+        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': settings.STATIC_ROOT,}),
+   )
+
+
 

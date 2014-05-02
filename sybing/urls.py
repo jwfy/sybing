@@ -9,7 +9,6 @@ urlpatterns = patterns(('sybing.views'),
     url (r'^comments/', include('django.contrib.comments.urls')),
 )
 
-# 以上的暂时都是渣
 urlpatterns += patterns('',
     url(r'^blog/$', BlogListViewByPage.as_view(), name='blog'),
     url(r'^blog/(?P<pk>\d+)/$', BlogDetailViewById.as_view(), name='blogdetail'),

@@ -1,4 +1,0 @@
-<!--<a href="#" class="list-group-item">E-mail</a>-->
-{% for cat in cats %}
-<a href="{% url 'blogbycat' cat.id %}" class="list-group-item">{{ cat.name }}</a>
-{% endfor %}

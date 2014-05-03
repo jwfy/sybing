@@ -1,10 +1,12 @@
 # Django settings for Blog project.
-
-DEBUG = True
+import os
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    # ('jwfy', '986450042@qq.com'),
 )
 
 MANAGERS = ADMINS
@@ -61,9 +63,9 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = 'E:/python/code/Blog/sybing/static'
-
-# URL prefix for static files.
+#STATIC_ROOT = 'E:/python/code/Blog/sybing/static'
+STATIC_ROOT = os.path.join(SITE_ROOT, '../sybing/static').replace('\\', '/')
+# URL prefix for static files.aaa
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
@@ -79,7 +81,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -89,7 +91,7 @@ SECRET_KEY = '2ttv2%@jz^_lo7*iiy6va(8mk82g%%f55^@z+%#2i-=1yiz+6+'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 
@@ -112,9 +114,9 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    'E:/python/code/Blog/sybing/html',
-   
+    # Don't forget to use absolute paths, not relative paths
+    os.path.join(SITE_ROOT, '../sybing/html').replace('\\', '/'),
+    # 'E:/python/code/Blog/sybing/html',
 )
 
 INSTALLED_APPS = (

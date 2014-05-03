@@ -57,7 +57,7 @@ class BlogListViewBySearch(ListView):
     def get_queryset(self):
         q = self.request.GET.get('q')
         if q:
-            return Blog.objects.filter(Q(caption__icontains=q)|Q(content__icontains=q)).distinct()
+            return Blog.objects.filter(Q(caption__icontains=q) | Q(content__icontains=q)).distinct()
 
 
 class MusicListViewsById(ListView):
@@ -72,14 +72,15 @@ def about(self):
     return render_to_response('about.html')
 
 
-def index(self):
+def index(request):
     """"显示首页页面的"""
-    return render_to_response('index.html')
+    return render_to_response('index.html', context_instance=RequestContext(request))
 
 
 def nofound(self):
     """404页面"""
     return render_to_response('404.html')
+
 
 def error(self):
     """500页面"""

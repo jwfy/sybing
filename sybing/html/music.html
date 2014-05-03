@@ -2,11 +2,11 @@
 {% block title %}音乐---jwfy{% endblock %}
 {% block active3 %} class="active" {% endblock %}
 {% block MAIN %}
-   <link rel="stylesheet" href="/static/css/music.css" type="text/css" />
-   <link rel="stylesheet" href="/static/css/music-font.css" type="text/css"/>
+   <link rel="stylesheet" href="{{ STATIC_URL }}css/music.css" type="text/css" />
+   <link rel="stylesheet" href="{{ STATIC_URL }}css/music-font.css" type="text/css"/>
    <div class="music">
    <div class="col-md-3 ">
-           <img class="music_class_pic" title="我喜欢" src="/static/img/main.jpg"/>
+           <img class="music_class_pic" title="我喜欢" src="{{ STATIC_URL }}img/main.jpg"/>
 		   <div class="self-clean"></div>
 	</div>
    <div class="col-md-9 music_list_panel">
@@ -87,7 +87,7 @@
     <div class="self-clean"></div>
 {% endblock %}
 {% block foot %}
-    <script src="/static/js/music.js"></script>
+    <script src="{{ STATIC_URL }}js/music.js"></script>
     <div class="cen" style="text-align: center;margin-top: 10px">
 Copyright © 2014 <a href="http://www.sybing.com" title="个人博客网站">jwfy</a> 版权归本人所有
 </div>

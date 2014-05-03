@@ -18,11 +18,23 @@ $(document).ready(function(){
 		var hh = $(this).text();
 		var html = "<a class=\"self-comment-cancelreply\" title=\"取消回复\">"+hh+"取消回复</a>";
 		$("#postcomment").find(".self-comment-title").append(html)
-		$("#id_comment").html(hh);
 	});
-	
-    $(".self-comment-cancelreply").live("click",function(){
-		alert("hhe");
-	})
-	
+
+    $(window).scroll(function(){
+		if($(window).scrollTop()>400){
+			$(".self-return").css("display","block");
+		}
+		else{
+			$(".self-return").css("display","none");
+		}
+	});
+
+	$(".self-return").click(function(){
+		$("body,html").animate({scrollTop:0},400);
+	});
+
+    $(document).on("click",".self-comment-showstyle",function(){
+        $(this).parent().css({"overflowY":"visible","maxHeight":"3000px"})
+        $(this).html("收缩")
+    })
 })

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from sybing.models import Author, Blog, Tag, Picture, Category, Link, Music, MusicBox
+from sybing.models import Author, Blog, Tag, Picture, Category, Link, Music, MusicBox, Bug
 from django.contrib import admin
 from django.contrib.comments.moderation import CommentModerator, moderator
 
@@ -35,6 +35,13 @@ class MusicAdmin(admin.ModelAdmin):
     date_hierarchy = 'time'
 
 
+class BugAdmin(admin.ModelAdmin):
+    """后台bug描述管理提交"""
+    list_display = ('name', 'email', 'descripe', 'url', 'define')
+    search_fields = ('descripe',)
+    date_hierarchy = 'time'
+
+
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Tag)
 admin.site.register(Link)
@@ -43,4 +50,5 @@ admin.site.register(Picture, PictureAdmin)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(MusicBox)
 admin.site.register(Music, MusicAdmin)
+admin.site.register(Bug, BugAdmin)
 

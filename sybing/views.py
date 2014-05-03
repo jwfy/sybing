@@ -67,9 +67,9 @@ class MusicListViewsById(ListView):
     queryset = Music.objects.all()
 
 
-def about(self):
+def about(request):
     """"显示关于页面的"""
-    return render_to_response('about.html')
+    return render_to_response('about.html', context_instance=RequestContext(request))
 
 
 def index(request):

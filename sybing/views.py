@@ -2,12 +2,14 @@
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
-from django.http import HttpResponse, Http404
-from sybing.models import Tag, Category,  Author, Link, Blog, Music
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from sybing.models import Tag, Category,  Author, Link, Blog, Music, Bug, BugSendMail
 from django.views.generic import ListView, DetailView
 from django.db.models import Q
 from django.db.models.expressions import F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from sybing.forms import BugForm
+from django.core.mail import send_mail
 
 
 class BlogListViewByPage(ListView):
@@ -85,3 +87,29 @@ def nofound(self):
 def error(self):
     """500页面"""
     return render_to_response('500.html')
+
+
+def BugPost(request):
+    """bug 提交"""
+    if request.method == 'POST':
+        form = BugForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            #  cd 就是即将存储的bug1的消息
+            Burl = cd['url']
+            Bname = cd['name']
+            Bemail = cd['email']
+            Bdescripe = cd['descripe']
+            data = Bug(url=Burl, name=Bname, email=Bemail, descripe=Bdescripe)
+            data.save()
+            # 现在开始给管理员发送邮件,采用HTML的样式
+            send_mail("BUG 提交", Bname + Bdescripe, 'jwfy0902@foxmail.com', ['986450042@qq.com'], fail_silently=True)
+            return render_to_response('bug/bugsuccess.html', context_instance=RequestContext(request))
+    else:
+        form = BugForm()
+    return render_to_response('bug/bugpost.html', {'form': form}, context_instance=RequestContext(request))
+
+
+def BugSuccess(request):
+    """提交bug转跳页面"""
+    return render_to_response('bug/bugsuccess.html', context_instance=RequestContext(request))

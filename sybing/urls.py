@@ -17,6 +17,8 @@ urlpatterns += patterns('',
     url(r'^blog/search/$', BlogListViewBySearch.as_view(), name='blogbysearch'),
     url(r'^music/$', MusicListViewsById.as_view(), name='music'),
     url(r'^about/$', 'sybing.views.about', name='about'),
+    url(r'^bug/post/$', 'sybing.views.BugPost', name='bug'),
+    url(r'^bug/post/success/$','sybing.views.BugSuccess', name='bugsuccess'),
     url(r'^$', 'sybing.views.index', name='index'),
 )
 

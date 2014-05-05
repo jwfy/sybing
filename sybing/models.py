@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.comments.moderation import CommentModerator, moderator
 
 
 class Tag(models.Model):
@@ -124,6 +125,7 @@ class Bug(models.Model):
     descripe = models.CharField(max_length=100, verbose_name=u'描述')
     define = models.BooleanField(blank=True, verbose_name=u'确认回复')
     time = models.DateTimeField(auto_now_add=True, verbose_name=u'提交时间')
+    enable_sendmail = models.BooleanField(default=True, verbose_name=u'邮件接收')
 
     def __unicode__(self):
         return u'%s  %s' % (self.name, self.descripe)
@@ -131,3 +133,10 @@ class Bug(models.Model):
     class Meta:
 
         verbose_name_plural = u'Bug提交'
+
+
+class BugSendMail(CommentModerator):
+    email_notification = True
+    enable_field = 'enable_sendmail'
+
+moderator.register(Bug,BugSendMail)

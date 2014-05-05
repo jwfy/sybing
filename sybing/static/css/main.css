@@ -340,3 +340,18 @@
 {
     opacity: 1;
 }
+.self-bug-errormessage
+{
+    position: absolute;
+    left:100%;
+    top: 0px;
+    height: 30px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 50px;
+    color: #333333;
+}
+.self-bug-error input,.self-bug-error textarea
+{
+    border: 1px solid #FF0000;
+}

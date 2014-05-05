@@ -1,4 +1,5 @@
 # Django settings for Blog project.
+# -*- coding: cp936 -*-
 import os
 
 DEBUG = True
@@ -135,6 +136,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.comments',
     'django.contrib.humanize',
+    'django.contrib.comments.moderation',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -165,3 +167,10 @@ LOGGING = {
         },
     }
 }
+#邮件配置
+EMAIL_HOST = 'pop.exmail.qq.com'            #发送邮件的服务器
+EMAIL_PORT = 465                            #POP/SMTP端口,采用SSL
+EMAIL_HOST_USER = 'jwfy0902@foxmail.com'       #我自己的邮箱
+EMAIL_HOST_PASSWORD = 'sybing520caohan'                  #我的邮箱密码
+EMAIL_SUBJECT_PREFIX = u'[jwfy个人博客]'            #为邮件Subject-line前缀,默认是'[django]'
+EMAIL_USE_TLS = True                             #与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false

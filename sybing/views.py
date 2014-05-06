@@ -9,7 +9,8 @@ from django.db.models import Q
 from django.db.models.expressions import F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from sybing.forms import BugForm
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage, send_mail
+from Blog.settings import EMAIL_HOST_USER
 
 
 class BlogListViewByPage(ListView):
@@ -103,7 +104,9 @@ def BugPost(request):
             data = Bug(url=Burl, name=Bname, email=Bemail, descripe=Bdescripe)
             data.save()
             # 现在开始给管理员发送邮件,采用HTML的样式
-            send_mail("BUG 提交", Bname + Bdescripe, 'jwfy0902@foxmail.com', ['986450042@qq.com'], fail_silently=True)
+            send_mail("BUG 提交", "hehe", EMAIL_HOST_USER , ['986450042@qq.com'] , fail_silently=True)
+            #msg = EmailMessage('BUG提交','消息，不知道说什么',to=['986450042@qq.com'])
+            #msg.send()
             return render_to_response('bug/bugsuccess.html', context_instance=RequestContext(request))
     else:
         form = BugForm()

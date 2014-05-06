@@ -103,7 +103,7 @@ def BugPost(request):
             Bdescripe = cd['descripe']
             data = Bug(url=Burl, name=Bname, email=Bemail, descripe=Bdescripe)
             data.save()
-            # 现在开始给管理员发送邮件,采用HTML的样式
+            # 现在开始给管理员发送邮件,以后采用HTML的样式
             send_mail("BUG 提交", "hehe", EMAIL_HOST_USER , ['986450042@qq.com'] , fail_silently=True)
             #msg = EmailMessage('BUG提交','消息，不知道说什么',to=['986450042@qq.com'])
             #msg.send()

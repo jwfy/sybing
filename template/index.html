@@ -1,0 +1,30 @@
+{% extends "root.html" %}
+{% block active1 %} class="active" {% endblock %}
+{%load sidebar%}
+{% block pic %}
+<div class="jumbotron self-jum">
+  <h1>Hello, world!</h1>
+  <h3>每一步都是下一步的第一步</h3>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+{% endblock %}
+
+{% block MAIN %}
+
+<div class="list-group self-index-group-1" id="article">
+  <a  class="list-group-item active"> 最近文章</a>
+  {% ITitles %}
+</div>
+
+<div class="list-group self-index-group-2" id="cat">
+  <a  class="list-group-item active"> 目录</a>
+  {% ICats %}
+</div>
+
+
+<div class="list-group self-index-group-3" id="link">
+  <a  class="list-group-item active"> 链接</a>
+  {% ILinks %}
+</div>
+
+{% endblock %}

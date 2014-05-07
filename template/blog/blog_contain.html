@@ -1,0 +1,20 @@
+{% load markup %}
+{% load comments %}
+  <div class="panel panel-default">
+      <div class="panel-body">
+      <h1>{{ article.caption }} </h1>
+        <p> 目录：<a href="{% url 'blogbycat' article.cat.id %}">{{ article.cat}} </a>发表时间：{{ article.publish_time|date:"F j日 Y" }} 
+        标签：{% for tag in article.tags.all %}
+               <a href="{% url 'blogbytag' tag.id%}">{{ tag.name }}</a>
+             {% endfor %}
+        </p>
+        <hr />
+        {{ article.content|markdown}}
+      </div>
+  </div>
+  <!--  版权所有和分享模块  -->
+  <div class="article-information">
+     {%include 'blog/blog_copyright.html'%}
+  </div>
+
+  

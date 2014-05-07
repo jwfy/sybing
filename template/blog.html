@@ -1,0 +1,19 @@
+{% extends "root.html" %}
+{% block active2 %} class="active" {% endblock %}
+{% block MAIN %}
+
+        <div class="col-md-9">
+        {% block container%}{% endblock %}
+        </div>
+        <div class="col-md-3">
+        {% block sidebar %}{% endblock %}
+        {% include 'sidebar.html '%}
+        </div>
+        <div class="self-other-contain">
+
+            <div class="self-return" title="返回顶部"></div>
+            <a href="{% url 'bug' %}" target="_blank"><div class="self-bug" title="Bug提交"></div></a>
+        </div>
+
+	<script src="{{ STATIC_URL }}js/blog.js"></script>
+{% endblock %}

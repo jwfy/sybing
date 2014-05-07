@@ -1,0 +1,54 @@
+{% extends "root.html" %}
+
+{% block MAIN %}
+<h1>Bug提交 <small><i>修补更多的缺陷，希望做的更好</i></small></h1>
+<form  action="" method="post" class="mainform" id="receive_comment" style="min-height: 412px">
+    <form action="#" method="post" class="mainform">
+            {% csrf_token %}
+            {{ article_form.object_pk }}
+            {{ article_form.content_type }}
+            {{ article_form.timestamp }}
+            {{ article_form.site }}
+            {{ article_form.submit_date }}
+            {{ article_form.security_hash }}
+        <div class="col-md-6 {% if form.name.errors %} self-bug-error {% endif %} ">
+            {{ form.name }}
+            {% for error in form.name.errors %}
+               <div class="self-bug-errormessage">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="self-clean"></div>
+        <div class="col-md-6  {% if form.email.errors %} self-bug-error {% endif %} ">
+            {{ form.email }}
+            {% for error in form.email.errors %}
+               <div class="self-bug-errormessage">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="self-clean"></div>
+        <div class="col-md-6  {% if form.url.errors %} self-bug-error {% endif %} ">
+            {{ form.url }}
+            {% for error in form.url.errors %}
+               <div class="self-bug-errormessage">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="self-clean"></div>
+        <div class="col-md-10  {% if form.descripe.errors %} self-bug-error {% endif %} ">
+            {{ form.descripe  }}
+            {% for error in form.descripe.errors %}
+               <div class="self-bug-errormessage">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="self-clean"></div>
+        <div class="col-md-12">
+             <input type="hidden" name="next" value="#"/>
+			<button class="btn btn-info" id="selfpostcomment" type="submit">提交BUG</button>
+        </div>
+        <div class="self-clean"></div>
+</form>
+</form>
+    <script>
+        $(document).ready(function(){
+
+        })
+    </script>
+{% endblock %}

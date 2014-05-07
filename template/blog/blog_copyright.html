@@ -1,0 +1,15 @@
+     <div class="row article-information-main">
+         <div class="announce" id="#1">
+             本博客内容版权归作者所有,采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank">署名2.5 中国大陆许可协议</a>,欢迎转载，如需转载，请说明出处!!!
+         </div>
+         <div class="announce" id="#2">
+             本网址链接: <a href="{% url 'blogdetail' article.pk %}">{% url 'blogdetail' article.pk %}</a>
+         </div>
+         <div class="announce" id="#3">
+             本博客作者: <a href="http://weibo.com/u/3019454970" title="本人新浪微博" target="_blank">jwfy</a>
+         </div>
+         <div class="announce" id="#4">
+             {%include 'blog/blog_share.html' %}
+         </div>
+     </div>
+     <div class="self-clean"></div>

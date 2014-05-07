@@ -1,0 +1,94 @@
+{% extends "root.html" %}
+{% block title %}音乐---jwfy{% endblock %}
+{% block active3 %} class="active" {% endblock %}
+{% block MAIN %}
+   <link rel="stylesheet" href="{{ STATIC_URL }}css/music.css" type="text/css" />
+   <link rel="stylesheet" href="{{ STATIC_URL }}css/music-font.css" type="text/css"/>
+   <div class="music">
+   <div class="col-md-3 ">
+           <img class="music_class_pic" title="我喜欢" src="{{ STATIC_URL }}img/main.jpg"/>
+		   <div class="self-clean"></div>
+	</div>
+   <div class="col-md-9 music_list_panel">
+       {% if musics.count %}
+            <div class="list-group">
+               <audio class="aud"></audio>
+               {% for music in musics %}
+                   <li id="list-{{ forloop.counter }}" class="list-group-item music_item" title="点击播放">
+                       <div class="music_item_name">{{ music.name }}</div>
+                       <div class="music_item_author">{{ music.author }}</div>
+                       <div class="music_item_cat">{{ music.cat }}</div>
+                       <div class="music_item_url">{{ music.url }}</div>
+                       <div class="music_item_picture">{{ music.picture }}</div>
+						  <div class="music_item_lrcurl">{{ music.lrc }}</div>
+                       <div class="self-clean"></div>
+                   </li>
+               {% endfor %}
+          </div>
+       {% else %}
+                暂无音乐导入数据库，请通知管理员更新数据库，谢谢！
+       {% endif %}
+   </div>
+   <div class="self-clean"></div>
+   </div>
+   <div class="music_lrc">
+           <div class="lrc-panel" id="lrc-panel">
+           	这是显示歌词的地方
+           </div>
+                
+   </div>
+       <dic class="music_control">
+        <div class="progress music_load_bar">
+            <div class="progress-bar progress-bar-success" id="music_lenght" style="width: 0px"></div>
+            <div class="progress-bar progress-bar-self" id="music_load" style="width: 0px"></div>
+            <span class="icon-position music_load_control" title="拖动，调节播放进度"></span>
+        </div>
+        <div class="music_control_main">
+               <div class="music_control_name">
+                   <img class="music_picture"/>
+                   <div class="music_infobox">
+                        <div class="music_info_title">            jwfy的个人音乐盒，点击聆听吧！！！   </div>
+                        <div class="music_info_time">
+                                   ←点击图片，可查看歌词
+                        </div>
+                       <div class="self-clean"></div>
+                   </div>
+               </div>
+               <div class="music_control_control">
+                   <span class="icon-backward" id="pre" title="上一首"></span>
+                   <span class="icon-play" id="play" title="播放"></span>
+                   <span class="icon-pause hidden" id="pause"  title="暂停"></span>
+                   <span class="icon-forward" id="next" title="下一首"></span>
+                   <div class="self-clean23"></div>
+               </div>
+               <div class="music_control_style">
+                   <div class="music_volume_tool_main">
+                                <span class="icon-volume-low" id="volume" title="调整音量大小"></span>
+                   </div>
+                   <div class="music_volume_main">
+                       <div class="progress music_volume_bar">
+                          <div class="progress-bar progress-bar-success"  id = "volume_length" style="width: 0px"></div>
+                          <span class="icon-position music_volume_control" title="拖动，调节播放进度"></span>
+                       </div>
+                   </div>
+                   <div class="music_play_playstyle">
+                         <span class="icon-list" id="playstyle" title="顺序播放"></span>
+						    <div class="music_show_playstyle">
+									<span class="icon-list" id="icon-list" >顺序播放</span>
+									<span class="icon-loop" id="icon-loop" >单曲循环</span>
+									<span class="icon-shuffle" id="icon-shuffle" >随机播放</span>
+							</div>
+					 </div>
+               </div>
+               <div class="self-clean"></div>
+        </div>
+        <div class="self-clean"></div>
+    </dic>
+    <div class="self-clean"></div>
+{% endblock %}
+{% block foot %}
+    <script src="{{ STATIC_URL }}js/music.js"></script>
+    <div class="cen" style="text-align: center;margin-top: 10px">
+Copyright © 2014 <a href="http://www.sybing.com" title="个人博客网站">jwfy</a> 版权归本人所有
+</div>
+{% endblock %}

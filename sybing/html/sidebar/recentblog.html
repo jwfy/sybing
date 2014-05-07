@@ -1,4 +1,0 @@
-<!--<a href="#" class="list-group-item">E-mail</a>-->
-{% for blog in titles %}
-<a href="{% url 'blogdetail' blog.pk %}" class="list-group-item" title="{{ blog.caption }} 点击查看">{{ blog.caption }}</a>
-{% endfor %}

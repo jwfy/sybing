@@ -8,7 +8,6 @@ TEMPLATE_DEBUG = DEBUG
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 ADMINS = (
-    # ('jwfy', '986450042@qq.com'),
 )
 
 MANAGERS = ADMINS
@@ -66,7 +65,7 @@ MEDIA_URL = ''
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
 #STATIC_ROOT = 'E:/python/code/Blog/sybing/static'
-STATIC_ROOT = os.path.join(SITE_ROOT, '../sybing/static').replace('\\', '/')
+STATIC_ROOT = os.path.join(SITE_ROOT, '../static').replace('\\', '/')
 # URL prefix for static files.aaa
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
@@ -117,7 +116,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths
-    os.path.join(SITE_ROOT, '../sybing/html').replace('\\', '/'),
+    os.path.join(SITE_ROOT, '../template').replace('\\', '/'),
     # 'E:/python/code/Blog/sybing/html',
 )
 
@@ -137,6 +136,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.humanize',
     'django.contrib.comments.moderation',
+    'comment',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -170,8 +170,10 @@ LOGGING = {
 
 #邮件配置
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True    #  默认设置为true,安全传输
-EMAIL_HOST = 'smtp.qq.com'   # foxmal服务器地址
-EMAIL_HOST_USER = 'jwfy0902@foxmail.com'
-EMAIL_HOST_PASSWORD = 'sybing520caohan'
-EMAIL_PORT = 465      # 采用了SSL加密措施
+MAIL_USE_TLS = True                                             #TLS安全传输
+EMAIL_HOST = 'smtp.qq.com'                                      #foxmal服务器地址
+EMAIL_HOST_USER = 'jwfy0902@foxmail.com'                        #帐户名
+EMAIL_HOST_PASSWORD = 'sybing520caohan'                         #密码
+EMAIL_PORT = 25                                                 #未采用SSL加密措施，感觉加密了基本上速度达不上上要求
+#自定义评论,一旦启用，之前的则会报错
+#COMMENTS_APP = 'comment'

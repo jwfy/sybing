@@ -12,7 +12,7 @@ sybing
 		3：url类似于 localhost:xxx/sybing/blog  
 		注意：本地电脑中路径不要使用中文路径   
 
-		E-mail：jwfy0902@hotmail.com
+E-mail：jwfy0902@hotmail.com
 
 2014年4月29号
 

@@ -1,7 +1,7 @@
 # -*- coding: cp936 -*-
 # Create your views here.
 from django.shortcuts import render_to_response, get_object_or_404, redirect
-from django.template import RequestContext
+from django.template import RequestContext, Context
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from sybing.models import Tag, Category,  Author, Link, Blog, Music, Bug, BugSendMail
 from django.views.generic import ListView, DetailView
@@ -9,8 +9,10 @@ from django.db.models import Q
 from django.db.models.expressions import F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from sybing.forms import BugForm
-from django.core.mail import EmailMessage, send_mail
+from django.core.mail import send_mail
 from Blog.settings import EMAIL_HOST_USER
+from django.core.mail import  EmailMultiAlternatives
+from django.template.loader import  get_template
 
 
 class BlogListViewByPage(ListView):
@@ -103,10 +105,22 @@ def BugPost(request):
             Bdescripe = cd['descripe']
             data = Bug(url=Burl, name=Bname, email=Bemail, descripe=Bdescripe)
             data.save()
-            # 现在开始给管理员发送邮件,以后采用HTML的样式
-            send_mail("BUG 提交", "hehe", EMAIL_HOST_USER , ['986450042@qq.com'] , fail_silently=True)
-            #msg = EmailMessage('BUG提交','消息，不知道说什么',to=['986450042@qq.com'])
-            #msg.send()
+            #   这句话是直接利用send发送邮件的
+            # send_mail("BUG submit", "Hello World", EMAIL_HOST_USER, [Bemail], fail_silently=True)
+            #  采用HTML 模板发送邮件
+            subject = u'Bug 提交'
+            from_email = EMAIL_HOST_USER    #发送邮件的账户
+            to_email = ['986450042@qq.com', 'sybing@live.cn']        #同时给管理员和发送bug的用户发送邮件
+            text = get_template('email/BugSendAdmin.txt')
+            html = get_template('email/BugSendAdmin.html')
+            cc = Context({'name': Bname, 'email': Bemail, 'contain': Bdescripe, 'url': Burl})
+            text_content = text.render(cc)
+            html_content = html.render(cc)
+            #
+            # #  现在开始发送邮件实体
+            msg = EmailMultiAlternatives(subject, text_content, from_email, to_email)
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
             return render_to_response('bug/bugsuccess.html', context_instance=RequestContext(request))
     else:
         form = BugForm()

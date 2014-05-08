@@ -30,9 +30,7 @@ urlpatterns += patterns((''),
 #  这是在调试这一块的时候的设置
 if settings.DEBUG is False:
     urlpatterns += patterns('',
-
-        url ( r'^static/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': settings.STATIC_ROOT}),
-
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
    )
 
 

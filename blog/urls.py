@@ -15,7 +15,5 @@ urlpatterns += patterns('',
     url(r'^cat/(?P<id>\d+)/$', BlogListViewByCategory.as_view(), name='blogbycat'),
     url(r'^tag/(?P<id>\d+)/$', BlogListViewByTag.as_view(), name='blogbytag'),
     url(r'^search/$', BlogListViewBySearch.as_view(), name='blogbysearch'),
-    url(r'^about/$', 'blog.views.about', name='about'),
-    url(r'^$', 'blog.views.index', name='index'),
 )
 

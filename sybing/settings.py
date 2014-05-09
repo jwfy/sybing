@@ -110,10 +110,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'Blog.urls'
+ROOT_URLCONF = 'sybing.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'Blog.wsgi.application'
+WSGI_APPLICATION = 'sybing.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -134,12 +134,13 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'sybing',
     'django.contrib.markup',
     'django.contrib.comments',
     'django.contrib.humanize',
     'django.contrib.comments.moderation',
-    'comment',
+    'blog',
+    'music',
+    'bug',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -178,5 +179,3 @@ EMAIL_HOST = 'smtp.qq.com'                                      #foxmal∑˛ŒÒ∆˜µÿ÷
 EMAIL_HOST_USER = 'jwfy0902@foxmail.com'                        #’ ªß√˚
 EMAIL_HOST_PASSWORD = 'sybing520caohan'                         #√‹¬Î
 EMAIL_PORT = 25                                                 #Œ¥≤…”√SSLº”√‹¥Î ©£¨∏–æıº”√‹¡Àª˘±æ…œÀŸ∂»¥Ô≤ª…œ…œ“™«Û
-#◊‘∂®“Â∆¿¬€,“ªµ©∆Ù”√£¨÷Æ«∞µƒ‘Úª·±®¥Ì
-#COMMENTS_APP = 'comment'

@@ -1,24 +1,36 @@
-# -*- coding: utf-8 -*-
+# -*- coding: cp936 -*-
+from django.conf.urls import patterns, include, url
+from django.conf import settings
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
 
-from django.conf.urls import *
-from sybing.views import BlogListViewByPage, BlogDetailViewById, BlogListViewByCategory, BlogListViewByTag
-from sybing.views import BlogListViewBySearch, MusicListViewsById
+#这里是在测试的时候直接导入的sybing中的views视图
 
+admin.autodiscover()
 
-urlpatterns = patterns(('sybing.views'),
-    url (r'^comments/', include('django.contrib.comments.urls')),
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'Blog.views.home', name='home'),
+    # url(r'^Blog/', include('Blog.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    url(r'^admin/', include(admin.site.urls)),
+)
+#  这里就是模块化的很好的一个例子，当我们的app过多的时候，调用很容易出现问题，这就很方便了
+urlpatterns += patterns((''),
+    (r'^blog/', include('blog.urls')),
+    (r'^music/', include('music.urls')),
+    (r'^bug/', include('bug.urls'))
 )
 
-urlpatterns += patterns('',
-    url(r'^blog/$', BlogListViewByPage.as_view(), name='blog'),
-    url(r'^blog/(?P<pk>\d+)/$', BlogDetailViewById.as_view(), name='blogdetail'),
-    url(r'^blog/cat/(?P<id>\d+)/$', BlogListViewByCategory.as_view(), name='blogbycat'),
-    url(r'^blog/tag/(?P<id>\d+)/$', BlogListViewByTag.as_view(), name='blogbytag'),
-    url(r'^blog/search/$', BlogListViewBySearch.as_view(), name='blogbysearch'),
-    url(r'^music/$', MusicListViewsById.as_view(), name='music'),
-    url(r'^about/$', 'sybing.views.about', name='about'),
-    url(r'^bug/post/$', 'sybing.views.BugPost', name='bug'),
-    url(r'^bug/post/success/$','sybing.views.BugSuccess', name='bugsuccess'),
-    url(r'^$', 'sybing.views.index', name='index'),
-)
+#  这是在调试这一块的时候的设置
+if settings.DEBUG is False:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+   )
+
+
 

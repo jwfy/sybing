@@ -1,37 +1,21 @@
-# -*- coding: cp936 -*-
-from django.conf.urls import patterns, include, url
-from django.conf import settings
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
+# -*- coding: utf-8 -*-
 
-#这里是在测试的时候直接导入的sybing中的views视图
-#from sybing import views
-admin.autodiscover()
+from django.conf.urls import *
+from blog.views import BlogListViewByPage, BlogDetailViewById, BlogListViewByCategory, BlogListViewByTag
+from blog.views import BlogListViewBySearch
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'Blog.views.home', name='home'),
-    # url(r'^Blog/', include('Blog.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
-    # 同上面的说明相匹配的
-    #(r'^sybing/bloglist',views.blog_list),
-
-)
-#  这里就是模块化的很好的一个例子，当我们的app过多的时候，调用很容易出现问题，这就很方便了
-urlpatterns += patterns((''),
-    (r'^sybing/',include('sybing.urls')),      
+urlpatterns = patterns(('blog.views'),
+    url (r'^comments/', include('django.contrib.comments.urls')),
 )
 
-#  这是在调试这一块的时候的设置
-if settings.DEBUG is False:
-    urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-   )
-
-
+urlpatterns += patterns('',
+    url(r'^$', BlogListViewByPage.as_view(), name='blog'),
+    url(r'^(?P<pk>\d+)/$', BlogDetailViewById.as_view(), name='blogdetail'),
+    url(r'^cat/(?P<id>\d+)/$', BlogListViewByCategory.as_view(), name='blogbycat'),
+    url(r'^tag/(?P<id>\d+)/$', BlogListViewByTag.as_view(), name='blogbytag'),
+    url(r'^search/$', BlogListViewBySearch.as_view(), name='blogbysearch'),
+    url(r'^about/$', 'blog.views.about', name='about'),
+    url(r'^$', 'blog.views.index', name='index'),
+)
 

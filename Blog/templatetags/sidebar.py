@@ -1,5 +1,5 @@
 from django import template
-from sybing.models import *
+from blog.models import *
 
 register = template.Library()
 

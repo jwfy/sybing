@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from sybing.models import Author, Blog, Tag, Picture, Category, Link, Music, MusicBox, Bug
+from blog.models import Author, Blog, Tag, Picture, Category, Link
 from django.contrib import admin
-from django.contrib.comments.moderation import CommentModerator, moderator
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -18,7 +17,6 @@ class BlogAdmin(admin.ModelAdmin):
     list_filter = ('publish_time',)
     date_hierarchy = 'publish_time'
     ordering = ('-publish_time',)
-    #raw_id_fields = ('author',)  # 它是一个包含外键字段名称的元组，它包含的字段将被展现成`` 文本框`` ，而不再是`` 下拉框`` 。
 
 
 class PictureAdmin(admin.ModelAdmin):
@@ -28,27 +26,11 @@ class PictureAdmin(admin.ModelAdmin):
     date_hierarchy = 'time'    
 
 
-class MusicAdmin(admin.ModelAdmin):
-    """主要是后台管理人员对音乐相关数据的管理"""
-    list_display = ('name', 'author', 'cat', 'time')
-    search_fields = ('name',)
-    date_hierarchy = 'time'
-
-
-class BugAdmin(admin.ModelAdmin):
-    """后台bug描述管理提交"""
-    list_display = ('name', 'email', 'descripe', 'url', 'define')
-    search_fields = ('descripe',)
-    date_hierarchy = 'time'
-
-
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Tag)
 admin.site.register(Link)
 admin.site.register(Category)
 admin.site.register(Picture, PictureAdmin)
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(MusicBox)
-admin.site.register(Music, MusicAdmin)
-admin.site.register(Bug, BugAdmin)
+
 

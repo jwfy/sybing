@@ -1,4 +1,4 @@
-# -*- coding: cp936 -*-
+# -*- coding: utf-8 -*-
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class BlogListViewByPage(ListView):
-    """ Ö÷ҪÊÇÏÖʵÕý³£ģʽÏµĲ©¿ÍÁбí """
+    """博客的具体列表"""
     queryset = Blog.objects.all()
     context_object_name = 'blogs'
     template_name = 'blog/blog_list.html'
@@ -18,7 +18,7 @@ class BlogListViewByPage(ListView):
 
 
 class BlogDetailViewById(DetailView):
-    """ Ö÷Ҫ ÊÇ ÏÔʾһƪ ÍêÕûµÄ ²©ÎÄÄÚÈÝ ¼ÓÈëä¯ÀÀÊý ģ¿é """
+    """ 博客的具体列表按照ID"""
     queryset = Blog.objects.all()
     context_object_name = 'article'
     template_name = 'blog/blog_detail.html'
@@ -60,20 +60,20 @@ class BlogListViewBySearch(ListView):
 
 
 def about(request):
-    """"ÏÔʾ¹ØÓÚҳÃæµÄ"""
+    """"关于页面"""
     return render_to_response('about.html', context_instance=RequestContext(request))
 
 
 def index(request):
-    """"ÏÔʾÊ×ҳҳÃæµÄ"""
+    """"首页页面"""
     return render_to_response('index.html', context_instance=RequestContext(request))
 
 
 def nofound(self):
-    """404ҳÃæ"""
+    """404"""
     return render_to_response('404.html')
 
 
 def error(self):
-    """500ҳÃæ"""
+    """500"""
     return render_to_response('500.html')

@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.comments.models import Comment
+from django.contrib.comments.managers import CommentManager
+from django.contrib.contenttypes.models import ContentType
 
 
 class Tag(models.Model):
@@ -79,3 +82,16 @@ class Picture(models.Model):
 
         ordering = ['-time']
         verbose_name_plural = u'图片'
+
+
+class BlogCommentsManager(CommentManager):
+    """自定义博客评论模块的相关操作"""
+    def get_blog_comment(self, blog):
+        """过滤出具体博客的评论"""
+        blog_type = ContentType.objects.get_for_model(blog)
+        return self.filter(content_type=blog_type, object_pk=blog.pk)
+
+
+class BlogComment(Comment):
+    """继承comment的相关方法"""
+    object = BlogCommentsManager()

@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'blog',
     'music',
     'bug',
+    'kernel',
 )
 
 # A sample logging configuration. The only tangible logging

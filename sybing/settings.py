@@ -137,11 +137,9 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.comments',
     'django.contrib.humanize',
-    'django.contrib.comments.moderation',
     'blog',
     'music',
     'bug',
-    'kernel',
 )
 
 # A sample logging configuration. The only tangible logging

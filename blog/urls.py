@@ -4,7 +4,6 @@ from django.conf.urls import *
 from blog.views import BlogListViewByPage, BlogDetailViewById, BlogListViewByCategory, BlogListViewByTag
 from blog.views import BlogListViewBySearch
 
-
 urlpatterns = patterns(('blog.views'),
     url (r'^comments/', include('django.contrib.comments.urls')),
 )

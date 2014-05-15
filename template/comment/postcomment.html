@@ -1,37 +1,33 @@
-{#    {% load comments %}#}
+{% load comments %}
 <div class="row" id="postcomment">
 <div class="col-md-12">
 <div class="panel self-theme">
-<div class="self-comment-title">新的评论 </div>
+<div class="self-comment-title">新的评论</div>
 <div class="self-clean"></div>
-{#{% get_comment_form for article as article_form %}#}
-<form  action="{% url 'blogdetail' article.id %}" method="post" class="mainform" id="receive_comment">
+{% get_comment_form for article as article_form %}
+<form  action="{% comment_form_target %}" method="post" class="mainform">
     <form action="#" method="post" class="mainform">
             {% csrf_token %}
-{#            {{ article_form.object_pk }}#}
-{#            {{ article_form.content_type }}#}
-{#            {{ article_form.timestamp }}#}
-{#            {{ article_form.site }}#}
-{#            {{ article_form.submit_date }}#}
-{#            {{ article_form.security_hash }}#}
+            {{ article_form.object_pk }}
+            {{ article_form.content_type }}
+            {{ article_form.timestamp }}
+            {{ article_form.site }}
+            {{ article_form.submit_date }}
+            {{ article_form.security_hash }}
         <div class="col-md-6">
-{#        	<input type="text" id="id_name" class="self-input" name="name" placeholder="请输入您的用户名" value="{{ user.username }}"/>#}
-            {{ form.user_name }}
+        	<input type="text" id="id_name" class="self-input" name="name" placeholder="请输入您的用户名" value="{{ user.username }}"/>
         </div>
         <div class="self-clean"></div>
         <div class="col-md-6">
-{#        	<input class="self-input" id="id_email" type="email" name="email" placeholder="请输入您的邮箱地址" value="{{ user.email }}"/>#}
-            {{ form.user_email }}
+        	<input class="self-input" id="id_email" type="email" name="email" placeholder="请输入您的邮箱地址" value="{{ user.email }}"/>
         </div>
         <div class="self-clean"></div>
         <div class="col-md-6">
-{#             <input class="self-input" id="id_url" type="url" name="url" placeholder="请输入您的网址" value="{{ user.url }}"/>#}
-            {{ form.user_url }}
+             <input class="self-input" id="id_url" type="url" name="url" placeholder="请输入您的网址" value="{{ user.url }}"/>
         </div>
         <div class="self-clean"></div>
         <div class="col-md-10">
-{#        	<textarea class="self-input" id="id_comment" name="comment" placeholder="请输入评论内容，提示：可以采用markdown格式插入高亮代码或者图片"></textarea>#}
-            {{ form.comment }}
+        	<textarea class="self-input" id="id_comment" name="comment" placeholder="请输入评论内容"></textarea>
         </div>
         <div class="self-clean"></div>
         <div class="col-md-12">
@@ -44,6 +40,3 @@
 </div>
 </div>
 </div>
-
-
-

@@ -1,5 +1,5 @@
 {% extends "blog.html" %}
-{#{% load comments %}#}
+{% load comments %}
 {% csrf_token %}
 
 {% block title %}{{ article.caption }} --jwfy的博客{% endblock %}
@@ -11,11 +11,11 @@
 <div class="row " id="showcomment">
 <div class="col-md-12">
   <div class="panel self-theme">
-{#      {% get_comment_count for article as comment_count %}#}
-        {% with comments|length as len %}
-          {% if len %}
-            <div class="self-comment-title">评论数：{{ len }}</div>
-{#            {% get_comment_list for article as comments %}#}
+      {% get_comment_count for article as comment_count %}
+{#        {% with comments|length as len %}#}
+          {% if comment_count %}
+            <div class="self-comment-title">评论数：{{ comment_count }}</div>
+            {% get_comment_list for article as comments %}
                   {% for comment in comments %}
                           <div class="self-list-commit" id="comment-{{forloop.counter}}">
                         {%include 'comment/listcomment.html'%}
@@ -24,7 +24,7 @@
           {% else %}
                 <div class="self-comment-title">暂无评论</div>
           {% endif %}
-        {% endwith %}
+{#        {% endwith %}#}
       <div class="self-clean"></div>
   </div>
  </div>

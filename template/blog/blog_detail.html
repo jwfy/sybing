@@ -8,28 +8,49 @@
 
 {%include 'blog/blog_contain.html'%}
 
-<div class="row " id="showcomment">
-<div class="col-md-12">
-  <div class="panel self-theme">
-      {% get_comment_count for article as comment_count %}
+{#<div class="row " id="showcomment">#}
+{#<div class="col-md-12">#}
+{#  <div class="panel self-theme">#}
+{#      {% get_comment_count for article as comment_count %}#}
 {#        {% with comments|length as len %}#}
-          {% if comment_count %}
-            <div class="self-comment-title">评论数：{{ comment_count }}</div>
-            {% get_comment_list for article as comments %}
-                  {% for comment in comments %}
-                          <div class="self-list-commit" id="comment-{{forloop.counter}}">
-                        {%include 'comment/listcomment.html'%}
-                            </div>
-                  {% endfor %}
-          {% else %}
-                <div class="self-comment-title">暂无评论</div>
-          {% endif %}
+{#          {% if comment_count %}#}
+{#            <div class="self-comment-title">评论数：{{ comment_count }}</div>#}
+{#            {% get_comment_list for article as comments %}#}
+{#                  {% for comment in comments %}#}
+{#                          <div class="self-list-commit" id="comment-{{forloop.counter}}">#}
+{#                        {%include 'comment/listcomment.html'%}#}
+{#                            </div>#}
+{#                  {% endfor %}#}
+{#          {% else %}#}
+{#                <div class="self-comment-title">暂无评论</div>#}
+{#          {% endif %}#}
 {#        {% endwith %}#}
-      <div class="self-clean"></div>
-  </div>
- </div>
-</div>
-{%include 'comment/postcomment.html'%}
+{#      <div class="self-clean"></div>#}
+{#  </div>#}
+{# </div>#}
+{#</div>#}
+{#{%include 'comment/postcomment.html'%}#}
+
+    <!-- 使用disqus 的第三方评论模块  -->
+
+
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'sybing'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 
 {% block js %}
 <link rel="stylesheet" href="/static/css/monokai.css" type="text/css"/>

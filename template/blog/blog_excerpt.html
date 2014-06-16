@@ -13,12 +13,13 @@
             {% endfor %}</div>
         <div class="self-panel-other-part">{{ blog.publish_time| naturaltime}} </div>
         <div class="self-panel-other-part">
-             {% get_comment_count for blog as comment_count %}
-             {% ifequal comment_count 0 %}
-                  暂无评论
-             {% else %}
-                  {{ comment_count }}条评论  
-             {% endifequal %}  
+{#             {% get_comment_count for blog as comment_count %}#}
+{#             {% ifequal comment_count 0 %}#}
+{#                  暂无评论#}
+{#             {% else %}#}
+{#                  {{ comment_count }}条评论  #}
+{#             {% endifequal %}  #}
+            <a href="{% url 'blogdetail' blog.pk %}#disqus_thread"></a>
          </div>
          <div class="self-panel-other-part">浏览量： {{ blog.count }}
          </div>
